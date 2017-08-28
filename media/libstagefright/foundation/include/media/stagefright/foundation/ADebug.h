@@ -149,8 +149,21 @@ struct ADebug {
     // string suitable for debugging
     static char *GetDebugName(const char *name);
 
+//    inline static bool isExperimentEnabled(
+//            const char * __unused name  /* nonnull */, bool allow __unused = true) {
+//#ifdef ENABLE_STAGEFRIGHT_EXPERIMENTS
+//        if (!strcmp(name, "legacy-adaptive")) {
+//            return getExperimentFlag(allow, name, 2, 1); // every other day
+//        } else if (!strcmp(name, "legacy-setsurface")) {
+//            return getExperimentFlag(allow, name, 3, 1); // every third day
+//        } else {
+//            ALOGE("unknown experiment '%s' (disabled)", name);
+//        }
+//#endif
+//        return false;
+//    }
     inline static bool isExperimentEnabled(
-            const char *name __unused /* nonnull */, bool allow __unused = true) {
+            const char * name  /* nonnull */, bool allow = true) {
 #ifdef ENABLE_STAGEFRIGHT_EXPERIMENTS
         if (!strcmp(name, "legacy-adaptive")) {
             return getExperimentFlag(allow, name, 2, 1); // every other day

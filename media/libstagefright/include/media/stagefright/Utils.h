@@ -22,7 +22,7 @@
 #include <stdint.h>
 #include <utils/Errors.h>
 #include <utils/RefBase.h>
-#include <system/audio.h>
+//#include <system/audio.h>
 #include <media/MediaPlayerInterface.h>
 
 namespace android {

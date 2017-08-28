@@ -61,14 +61,18 @@ inline static const T &max(const T &a, const T &b) {
     return a > b ? a : b;
 }
 
+//template<class T>
+//void ENSURE_UNSIGNED_TYPE() {
+//    T TYPE_MUST_BE_UNSIGNED[(T)-1 < 0 ? -1 : 0] __unused;
+//}
 template<class T>
 void ENSURE_UNSIGNED_TYPE() {
-    T TYPE_MUST_BE_UNSIGNED[(T)-1 < 0 ? -1 : 0] __unused;
+    T TYPE_MUST_BE_UNSIGNED[(T)-1 < 0 ? -1 : 0];
 }
 
 // needle is in range [hayStart, hayStart + haySize)
 template<class T, class U>
-__attribute__((no_sanitize("integer")))
+//__attribute__((no_sanitize("integer")))
 inline static bool isInRange(const T &hayStart, const U &haySize, const T &needle) {
     ENSURE_UNSIGNED_TYPE<U>();
     return (T)(hayStart + haySize) >= hayStart && needle >= hayStart && (U)(needle - hayStart) < haySize;
@@ -76,7 +80,7 @@ inline static bool isInRange(const T &hayStart, const U &haySize, const T &needl
 
 // [needleStart, needleStart + needleSize) is in range [hayStart, hayStart + haySize)
 template<class T, class U>
-__attribute__((no_sanitize("integer")))
+//__attribute__((no_sanitize("integer")))
 inline static bool isInRange(
         const T &hayStart, const U &haySize, const T &needleStart, const U &needleSize) {
     ENSURE_UNSIGNED_TYPE<U>();

@@ -24,6 +24,8 @@
 
 #include <OMX_Component.h>
 
+#include <stddef.h>
+
 namespace android {
 
 struct SoftOMXComponent : public RefBase {
